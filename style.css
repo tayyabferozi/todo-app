@@ -1,0 +1,197 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+* {
+  border: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  background: #72afd30e;
+}
+
+.todo-container {
+  max-width: 35rem;
+  padding: 3rem;
+  margin: 5rem auto 0;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 0 7px #393e461a;
+          box-shadow: 0 0 7px #393e461a;
+  border: 1px solid #ececec;
+  background-color: #fff;
+}
+
+.todo-container .todo-form {
+  width: 10rem;
+  margin: 0 auto 4rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.todo-container .todo-form > * {
+  margin: 0 1rem;
+}
+
+.todo-container .todo-form input {
+  padding: 0.5rem 0;
+  border: none;
+  border-bottom: 1px solid #c7c7c7;
+  color: #435a59;
+  background: transparent;
+  text-align: center;
+  cursor: pointer;
+  -webkit-transition: border 0.5s ease;
+  transition: border 0.5s ease;
+}
+
+.todo-container .todo-form input + div {
+  position: relative;
+}
+
+.todo-container .todo-form input + div::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: #f09041;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-transition: width 0.25s ease;
+  transition: width 0.25s ease;
+}
+
+.todo-container .todo-form input:focus {
+  outline: none;
+  border-color: transparent;
+}
+
+.todo-container .todo-form input:focus + div::after {
+  width: 100%;
+}
+
+.todo-container .todo-form button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1rem;
+  border-radius: 50%;
+  color: #fff;
+  width: 2.5rem;
+  height: 2.5rem;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  background-color: #f09041;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.todo-container .todo-form button:focus {
+  outline: none;
+}
+
+.todo-container .todo-list-container .todo-list-item {
+  padding: 1rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.todo-container .todo-list-container .todo-list-item input[type="text"] {
+  margin-left: 1.5rem;
+  cursor: pointer;
+  color: #3c183f;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.todo-container .todo-list-container .todo-list-item input[type="text"]:focus {
+  outline: 0;
+}
+
+.todo-container .todo-list-container .todo-list-item img {
+  width: 1.5rem;
+}
+
+.todo-container .todo-list-container .todo-list-item > * {
+  cursor: pointer;
+}
+
+.animated {
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+}
+
+.flipOutX {
+  -webkit-animation-duration: 0.75s;
+          animation-duration: 0.75s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-name: flipOutX;
+          animation-name: flipOutX;
+  -webkit-backface-visibility: visible !important;
+          backface-visibility: visible !important;
+}
+
+@-webkit-keyframes flipOutX {
+  from {
+    -webkit-transform: perspective(400px);
+            transform: perspective(400px);
+  }
+  30% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+            transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    opacity: 1;
+  }
+  to {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+            transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    opacity: 0;
+  }
+}
+
+@keyframes flipOutX {
+  from {
+    -webkit-transform: perspective(400px);
+            transform: perspective(400px);
+  }
+  30% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+            transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    opacity: 1;
+  }
+  to {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+            transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    opacity: 0;
+  }
+}
+/*# sourceMappingURL=style.css.map */
