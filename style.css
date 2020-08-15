@@ -5,7 +5,7 @@
   list-style: none;
   text-decoration: none;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -19,7 +19,7 @@ body {
   margin: 5rem auto 0;
   border-radius: 10px;
   -webkit-box-shadow: 0 0 7px #393e461a;
-          box-shadow: 0 0 7px #393e461a;
+  box-shadow: 0 0 7px #393e461a;
   border: 1px solid #ececec;
   background-color: #fff;
 }
@@ -31,11 +31,11 @@ body {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .todo-container .todo-form > * {
@@ -68,7 +68,7 @@ body {
   height: 2px;
   background-color: #f09041;
   -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%);
   -webkit-transition: width 0.25s ease;
   transition: width 0.25s ease;
 }
@@ -87,11 +87,11 @@ body {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   padding: 1rem;
   border-radius: 50%;
   color: #fff;
@@ -116,16 +116,19 @@ body {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.todo-container .todo-list-container .todo-list-item input[type="checkbox"] {
+  cursor: pointer;
 }
 
 .todo-container .todo-list-container .todo-list-item input[type="text"] {
   margin-left: 1.5rem;
-  cursor: pointer;
   color: #3c183f;
   font-weight: 600;
   font-size: 1rem;
@@ -139,41 +142,37 @@ body {
   width: 1.5rem;
 }
 
-.todo-container .todo-list-container .todo-list-item > * {
-  cursor: pointer;
-}
-
 .animated {
   -webkit-animation-duration: 1s;
-          animation-duration: 1s;
+  animation-duration: 1s;
   -webkit-animation-fill-mode: both;
-          animation-fill-mode: both;
+  animation-fill-mode: both;
 }
 
 .flipOutX {
   -webkit-animation-duration: 0.75s;
-          animation-duration: 0.75s;
+  animation-duration: 0.75s;
   -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
   -webkit-animation-name: flipOutX;
-          animation-name: flipOutX;
+  animation-name: flipOutX;
   -webkit-backface-visibility: visible !important;
-          backface-visibility: visible !important;
+  backface-visibility: visible !important;
 }
 
 @-webkit-keyframes flipOutX {
   from {
     -webkit-transform: perspective(400px);
-            transform: perspective(400px);
+    transform: perspective(400px);
   }
   30% {
     -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
-            transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
     opacity: 1;
   }
   to {
     -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
-            transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
     opacity: 0;
   }
 }
@@ -181,16 +180,16 @@ body {
 @keyframes flipOutX {
   from {
     -webkit-transform: perspective(400px);
-            transform: perspective(400px);
+    transform: perspective(400px);
   }
   30% {
     -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
-            transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
     opacity: 1;
   }
   to {
     -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
-            transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
     opacity: 0;
   }
 }

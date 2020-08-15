@@ -1,56 +1,64 @@
-var todoFormButton = document.getElementsByTagName("button")[0];
+$(document).ready(function () {
+  let fetchedTodos;
+  var todoFormButton = document.getElementsByTagName("button")[0];
 
-todoFormButton.addEventListener("click", function (e) {
-  var todoList = document.querySelector(".todo-list");
-  var newTodoText = document.querySelector("input").value;
-  var newTodoListItem = document.createElement("li");
-  var div1 = document.createElement("div");
-  div1.classList.add("item-main");
-  var div2 = document.createElement("div");
-  div2.classList.add("item-edit");
-  var newTodoCheckBox = document.createElement("input");
-  newTodoCheckBox.type = "checkbox";
-  // span for containing todo text and inupt
-  var newTodoInput = document.createElement("input");
-  newTodoInput.type = "text";
-  newTodoInput.disabled = true;
-  newTodoInput.value = newTodoText;
-  // kick off the contents into first div
-  div1.appendChild(newTodoCheckBox);
-  div1.appendChild(newTodoInput);
-  // kick off the image in second div
-  var image = document.createElement("img");
-  image.src = "edit.svg";
-  div2.appendChild(image);
-  // kick off the contents into li
-  newTodoListItem.classList.add("todo-list-item");
-  newTodoListItem.appendChild(div1);
-  newTodoListItem.appendChild(div2);
-  todoList.appendChild(newTodoListItem);
+  firebase
+    .database()
+    .ref("todos")
+    .on("value", function (data) {
+      fetchedTodos = data.val();
+      $(".todo-list").empty();
 
-  var todoItems = document.querySelectorAll(".item-main");
-  for (var todoItem of todoItems) {
-    todoItem.addEventListener("click", function () {
-      this.parentElement.classList.add("flipOutX");
-      this.parentElement.style.textDecoration = "line-through";
-      this.querySelector("input").checked = true;
-      setTimeout(() => {
-        this.parentElement.remove();
-      }, 750);
-    });
+      for (let todo in fetchedTodos) {
+        let todoText = fetchedTodos[todo];
+        let markup = `<li class='todo-list-item'>
+          <div class='item-main'>
+            <input id=${todo} type='checkbox'/>
+              <input type='text' disabled value='${todoText}' />
+            </label>
+          </div>
+          <div class='item-edit'>
+            <img src='edit.svg' />
+          </div>
+        </li>`;
 
-    var editIcons = document.querySelectorAll(".item-edit");
-    for (var editIcon of editIcons) {
-      editIcon.addEventListener("click", function () {
-        this.previousSibling.lastElementChild.disabled = false;
-        this.previousSibling.lastElementChild.focus();
-        this.previousSibling.lastElementChild.addEventListener(
-          "focusout",
-          function () {
-            this.disabled = true;
-          }
-        );
+        $(".todo-list").append(markup);
+      }
+
+      $("input[type='checkbox']").on("click", function () {
+        let todoListItem = $(this).parents(".todo-list-item");
+        let id = todoListItem.find("input[type='checkbox']").attr("id");
+        firebase.database().ref(`todos/${id}`).remove();
+        todoListItem.addClass("flipOutX");
+        todoListItem
+          .find("input[type='text'")
+          .css("text-decoration", "line-through");
+        setTimeout(() => {
+          todoListItem.remove();
+        }, 750);
       });
-    }
-  }
+      $(".item-edit").on("click", function () {
+        let inputField = $(this)
+          .parents(".todo-list-item")
+          .find("input[type='text']");
+        console.log(inputField);
+        inputField.attr("disabled", false);
+        inputField.focus();
+      });
+      $("input[type='text']").on("focus", function () {
+        $(this)[0].setSelectionRange(100, 100);
+
+        $("input[type='text']").on("focusout", function () {
+          let todoListItem = $(this).parents(".todo-list-item");
+          let id = todoListItem.find("input[type='checkbox']").attr("id");
+          let valueChanged = todoListItem.find("input[type='text']").val();
+          firebase.database().ref(`todos/${id}`).set(valueChanged);
+        });
+      });
+    });
+  $("button").on("click", function (e) {
+    let todo = $("input[type='text']").val();
+    firebase.database().ref("todos/").push(todo);
+    // $("input[type='text']:first").val("");
+  });
 });
